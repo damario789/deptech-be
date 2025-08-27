@@ -1,0 +1,48 @@
+// Prisma schema for cuti management app
+// Models: Admin, Pegawai, Cuti
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  firstName    String
+  lastName     String
+  email        String   @unique
+  birthDate    DateTime
+  gender       String
+  password     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Employee {
+  id           Int      @id @default(autoincrement())
+  firstName    String
+  lastName     String
+  email        String   @unique
+  phone        String
+  address      String
+  gender       String
+  leaves       Leave[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Leave {
+  id             Int      @id @default(autoincrement())
+  reason         String
+  startDate      DateTime
+  endDate        DateTime
+  status         String   @default("PENDING")
+  employeeId     Int
+  employee       Employee @relation(fields: [employeeId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

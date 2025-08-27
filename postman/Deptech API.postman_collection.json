@@ -1,0 +1,2624 @@
+{
+	"info": {
+		"_postman_id": "ad2db4b3-8c72-4cf4-8a34-8c99d2e879a0",
+		"name": "Deptech API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16511646"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Super\",\n  \"lastName\": \"Admin2\",\n  \"email\": \"admin2@deptech.com\",\n  \"birthDate\": \"1990-01-01\",\n  \"gender\": \"MALE\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Super\",\n  \"lastName\": \"Admin2\",\n  \"email\": \"admin2@deptech.com\",\n  \"birthDate\": \"1990-01-01\",\n  \"gender\": \"MALE\",\n  \"password\": \"admin123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "261"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"105-rsRCq4EwL/+JJSeQ21+pM6ZfGY4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:23:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin registered successfully\",\n    \"data\": {\n        \"id\": 3,\n        \"firstName\": \"Super\",\n        \"lastName\": \"Admin2\",\n        \"email\": \"admin2@deptech.com\",\n        \"birthDate\": \"1990-01-01T00:00:00.000Z\",\n        \"gender\": \"MALE\",\n        \"createdAt\": \"2025-08-27T17:23:57.563Z\",\n        \"updatedAt\": \"2025-08-27T17:23:57.563Z\"\n    }\n}"
+						},
+						{
+							"name": "400 Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": 111,\n  \"lastName\": 111,\n  \"email\": \"admin2@deptech.com\",\n  \"birthDate\": \"1990-01-01\",\n  \"gender\": \"MALE\",\n  \"password\": \"admin123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "203"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cb-tLuEb72vbsYKpE1Tx6B76FXBRVY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:43:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Validation failed\",\n    \"error\": \"BAD_REQUEST\",\n    \"details\": [\n        \"firstName must be a string\",\n        \"lastName must be a string\"\n    ],\n    \"timestamp\": \"2025-08-27T17:43:12.271Z\",\n    \"path\": \"/admin/register\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const data = pm.response.json();",
+									"if (data.access_token) {",
+									"  pm.environment.set(\"access_token\", data.access_token);",
+									"  console.log(\"Token saved!\", data.access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@deptech.com\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"admin@deptech.com\",\n  \"password\": \"admin123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "449"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c1-IjzZTR+JDqdsPpyrAm7EJ5DXDkk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:23:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": 2,\n            \"firstName\": \"Super\",\n            \"lastName\": \"Admin\",\n            \"email\": \"admin@deptech.com\",\n            \"birthDate\": \"1990-01-01T00:00:00.000Z\",\n            \"gender\": \"MALE\",\n            \"createdAt\": \"2025-08-27T17:20:01.607Z\",\n            \"updatedAt\": \"2025-08-27T17:20:01.607Z\"\n        },\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiYWRtaW5AZGVwdGVjaC5jb20iLCJpYXQiOjE3NTYzMTUzODcsImV4cCI6MTc1NjQwMTc4N30.WxaV_DNuOdMxsrUE9AO7oIc0M1ez4RJAWKcKUC0b8YI\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "263"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"107-mTL4PjCUW6zbZuUASD3l7HlLM/s\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:13:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admins retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"firstName\": \"Updated\",\n            \"lastName\": \"Admin\",\n            \"email\": \"admin@deptech.com\",\n            \"birthDate\": \"1990-01-01T00:00:00.000Z\",\n            \"gender\": \"MALE\",\n            \"createdAt\": \"2025-08-27T11:53:18.159Z\",\n            \"updatedAt\": \"2025-08-27T12:30:05.866Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/admin/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-PIhgc4y2dbFEpElBDc5SVO7yiig\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:26:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Admin with ID 1 not found\",\n    \"error\": \"NOT_FOUND\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T17:26:56.353Z\",\n    \"path\": \"/admin/1\"\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/admin/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "258"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"102-PYdpTUXNUs2mL2akFW7ud4vh5no\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:31:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin retrieved successfully\",\n    \"data\": {\n        \"id\": 2,\n        \"firstName\": \"Super\",\n        \"lastName\": \"Admin\",\n        \"email\": \"admin@deptech.com\",\n        \"birthDate\": \"1990-01-01T00:00:00.000Z\",\n        \"gender\": \"MALE\",\n        \"createdAt\": \"2025-08-27T17:20:01.607Z\",\n        \"updatedAt\": \"2025-08-27T17:20:01.607Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Updateddd\",\n  \"lastName\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Updatedd\",\n  \"lastName\": \"Admin\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "259"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"103-wF1hwCcc3ppW15SbxAkoBKphp8c\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:40:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Admin updated successfully\",\n    \"data\": {\n        \"id\": 2,\n        \"firstName\": \"Updatedd\",\n        \"lastName\": \"Admin\",\n        \"email\": \"admin@deptech.com\",\n        \"birthDate\": \"1990-01-01T00:00:00.000Z\",\n        \"gender\": \"MALE\",\n        \"createdAt\": \"2025-08-27T17:20:01.607Z\",\n        \"updatedAt\": \"2025-08-27T17:40:43.139Z\"\n    }\n}"
+						},
+						{
+							"name": "400 Bad Request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": 123,\n  \"lastName\": 111\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "168"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a8-dWgvMfUFfuPdA4fQKPIqXAnf06A\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:42:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Validation failed\",\n    \"error\": \"BAD_REQUEST\",\n    \"details\": [\n        \"firstName must be a string\"\n    ],\n    \"timestamp\": \"2025-08-27T17:42:00.439Z\",\n    \"path\": \"/admin/2\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/admin/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-bxNIBKJD8V0bI3S0jvnVlF74Whg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:14:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin deleted successfully\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/admin/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"10"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "150"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-l0toKXGaviXvAor1jht3fbQkqW4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 17:44:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Admin with ID 10 not found\",\n    \"error\": \"NOT_FOUND\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T17:44:27.465Z\",\n    \"path\": \"/admin/10\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Johan\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johan@example.com\",\n  \"phone\": \"08123456789\",\n  \"address\": \"Jakarta\",\n  \"gender\": \"MALE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/employee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Johan\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johan@example.com\",\n  \"phone\": \"08123456789\",\n  \"address\": \"Jakarta\",\n  \"gender\": \"MALE\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/employee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "260"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"104-wTPZicK9D6p3y5NTimRb3tnY4xI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:30:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Employee created successfully\",\n    \"data\": {\n        \"id\": 3,\n        \"firstName\": \"Johan\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johan@example.com\",\n        \"phone\": \"08123456789\",\n        \"address\": \"Jakarta\",\n        \"gender\": \"MALE\",\n        \"createdAt\": \"2025-08-27T18:30:41.653Z\",\n        \"updatedAt\": \"2025-08-27T18:30:41.653Z\"\n    }\n}"
+						},
+						{
+							"name": "400 Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": 123,\n  \"lastName\": 123,\n  \"email\": \"johan@example.com\",\n  \"phone\": \"08123456789\",\n  \"address\": \"Jakarta\",\n  \"gender\": \"MALE\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/employee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-zVT1wgMeihvhFPV0JpH4ayEdKLg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:31:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Validation failed\",\n    \"error\": \"BAD_REQUEST\",\n    \"details\": [\n        \"firstName must be a string\",\n        \"lastName must be a string\"\n    ],\n    \"timestamp\": \"2025-08-27T18:31:22.903Z\",\n    \"path\": \"/employee\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/employee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/employee",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "421"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a5-MSZnDoOCJzBa2u2jc8UiDj11UJM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 13:02:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"john@deptech.com\",\n        \"phone\": \"08123456789\",\n        \"address\": \"Jakarta\",\n        \"gender\": \"MALE\",\n        \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n        \"updatedAt\": \"2025-08-27T11:53:18.166Z\"\n    },\n    {\n        \"id\": 2,\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Smith\",\n        \"email\": \"jane@deptech.com\",\n        \"phone\": \"08129876543\",\n        \"address\": \"Bandung\",\n        \"gender\": \"FEMALE\",\n        \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n        \"updatedAt\": \"2025-08-27T11:53:18.166Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "List All With Leaves",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/employee/with-leaves",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"employee",
+								"with-leaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/employee/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"employee",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/employee/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "247"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f7-XGU6mzsOp9x1M7aKd2XrnJkbgxA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:32:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Retrieved employee\",\n    \"data\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"john@deptech.com\",\n        \"phone\": \"08123456789\",\n        \"address\": \"Jakarta\",\n        \"gender\": \"MALE\",\n        \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n        \"updatedAt\": \"2025-08-27T11:53:18.166Z\"\n    }\n}"
+						},
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/employee/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee",
+										"10"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-Mio2pvs3JmVYDomU6g2gZCOuiMY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:32:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Employee with ID 10 not found\",\n    \"error\": \"NOT_FOUND\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T18:32:21.529Z\",\n    \"path\": \"/employee/10\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Detail With Leaves",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/employee/1/leaves",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"employee",
+								"1",
+								"leaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"08123456788\",\n  \"address\": \"Bandung\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/employee/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"employee",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"phone\": \"08123456788\",\n  \"address\": \"Bandung\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/employee/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "258"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"102-ImvwTD0448iQnjFVtRCeTSDoEe4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:33:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee updated successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"john@deptech.com\",\n        \"phone\": \"08123456788\",\n        \"address\": \"Bandung\",\n        \"gender\": \"MALE\",\n        \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n        \"updatedAt\": \"2025-08-27T18:33:09.259Z\"\n    }\n}"
+						},
+						{
+							"name": "400 Bad Request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"phone\": 123,\n  \"address\": 123\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/employee/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee",
+										"1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "194"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c2-0qSB7unRdcLXkF8wbx6kLi5ENnA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:33:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Validation failed\",\n    \"error\": \"BAD_REQUEST\",\n    \"details\": [\n        \"phone must be a string\",\n        \"address must be a string\"\n    ],\n    \"timestamp\": \"2025-08-27T18:33:34.914Z\",\n    \"path\": \"/employee/1\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/employee/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"employee",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/employee/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37-Grng+hxUTgC+NFX3BdMj7gu03tQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:34:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Employee deleted successfully\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/employee/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"employee",
+										"10"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-dCC6RVrxa05L7/V/38UtRhOAQ58\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:34:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Employee with ID 10 not found\",\n    \"error\": \"NOT_FOUND\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T18:34:27.449Z\",\n    \"path\": \"/employee/10\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Leave",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reason\": \"Vacation\",\n  \"startDate\": \"2025-09-01\",\n  \"endDate\": \"2025-09-03\",\n  \"employeeId\": 1,\n  \"status\": \"PENDING\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/leave",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leave"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"reason\": \"Vacation\",\n  \"startDate\": \"2025-09-01\",\n  \"endDate\": \"2025-09-01\",\n  \"employeeId\": 1,\n  \"status\": \"PENDING\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/leave",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "491"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1eb-69g70UCpp8TuaNqmp80mVKK+rYM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:45:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Leave request created successfully\",\n    \"data\": {\n        \"id\": 3,\n        \"reason\": \"Vacation\",\n        \"startDate\": \"2025-09-01T00:00:00.000Z\",\n        \"endDate\": \"2025-09-01T00:00:00.000Z\",\n        \"status\": \"PENDING\",\n        \"employeeId\": 1,\n        \"createdAt\": \"2025-08-27T18:45:56.644Z\",\n        \"updatedAt\": \"2025-08-27T18:45:56.644Z\",\n        \"employee\": {\n            \"id\": 1,\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john@deptech.com\",\n            \"phone\": \"08123456788\",\n            \"address\": \"Bandung\",\n            \"gender\": \"MALE\",\n            \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n            \"updatedAt\": \"2025-08-27T18:33:09.259Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "400 Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"reason\": \"Vacation\",\n  \"startDate\": \"2025-09-01\",\n  \"endDate\": \"2025-09-01\",\n  \"employeeId\": 1,\n  \"status\": \"PENDING\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/leave",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "213"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d5-fnOTo2duvzh7Sa/s0aWvrCG0QmM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:47:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Employee has already used 1 day(s) of leave in 9/2025. Maximum 1 day per month is allowed.\",\n    \"error\": \"BAD_REQUEST\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T18:47:45.206Z\",\n    \"path\": \"/leave\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/leave",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leave"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/leave",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1df-fTN97PfKY6lK0ceP3sfFHjooATs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:54:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Retrieved leave records\",\n    \"data\": [\n        {\n            \"id\": 3,\n            \"reason\": \"Rest\",\n            \"startDate\": \"2025-09-01T00:00:00.000Z\",\n            \"endDate\": \"2025-09-01T00:00:00.000Z\",\n            \"status\": \"APPROVED\",\n            \"employeeId\": 1,\n            \"createdAt\": \"2025-08-27T18:45:56.644Z\",\n            \"updatedAt\": \"2025-08-27T18:53:05.179Z\",\n            \"employee\": {\n                \"id\": 1,\n                \"firstName\": \"John\",\n                \"lastName\": \"Doe\",\n                \"email\": \"john@deptech.com\",\n                \"phone\": \"08123456788\",\n                \"address\": \"Bandung\",\n                \"gender\": \"MALE\",\n                \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n                \"updatedAt\": \"2025-08-27T18:33:09.259Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List by Employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/leave?employeeId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leave"
+							],
+							"query": [
+								{
+									"key": "employeeId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/leave?employeeId=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave"
+									],
+									"query": [
+										{
+											"key": "employeeId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1df-fTN97PfKY6lK0ceP3sfFHjooATs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:55:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Retrieved leave records\",\n    \"data\": [\n        {\n            \"id\": 3,\n            \"reason\": \"Rest\",\n            \"startDate\": \"2025-09-01T00:00:00.000Z\",\n            \"endDate\": \"2025-09-01T00:00:00.000Z\",\n            \"status\": \"APPROVED\",\n            \"employeeId\": 1,\n            \"createdAt\": \"2025-08-27T18:45:56.644Z\",\n            \"updatedAt\": \"2025-08-27T18:53:05.179Z\",\n            \"employee\": {\n                \"id\": 1,\n                \"firstName\": \"John\",\n                \"lastName\": \"Doe\",\n                \"email\": \"john@deptech.com\",\n                \"phone\": \"08123456788\",\n                \"address\": \"Bandung\",\n                \"gender\": \"MALE\",\n                \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n                \"updatedAt\": \"2025-08-27T18:33:09.259Z\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/leave/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leave",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Detail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/leave/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "476"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1dc-5df1FSaohvha+8D+3+Ogp/Og2/k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:56:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"message\": \"Retrieved leave record\",\n    \"data\": {\n        \"id\": 3,\n        \"reason\": \"Rest\",\n        \"startDate\": \"2025-09-01T00:00:00.000Z\",\n        \"endDate\": \"2025-09-01T00:00:00.000Z\",\n        \"status\": \"APPROVED\",\n        \"employeeId\": 1,\n        \"createdAt\": \"2025-08-27T18:45:56.644Z\",\n        \"updatedAt\": \"2025-08-27T18:53:05.179Z\",\n        \"employee\": {\n            \"id\": 1,\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john@deptech.com\",\n            \"phone\": \"08123456788\",\n            \"address\": \"Bandung\",\n            \"gender\": \"MALE\",\n            \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n            \"updatedAt\": \"2025-08-27T18:33:09.259Z\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reason\": \"Sick Leave\",\n  \"endDate\": \"2025-09-04\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/leave/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leave",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"reason\": \"Rest\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/leave/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-QkHiZ7YxSAZAG0I5TLEdg/UvbD4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:51:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Leave with ID 1 not found\",\n    \"error\": \"NOT_FOUND\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T18:51:20.957Z\",\n    \"path\": \"/leave/1\"\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"reason\": \"Rest\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/leave/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "486"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e6-zXxcEP0Bp07Gx4Gr7kyTvmhcVr8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:52:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Leave record updated successfully\",\n    \"data\": {\n        \"id\": 3,\n        \"reason\": \"Rest\",\n        \"startDate\": \"2025-09-01T00:00:00.000Z\",\n        \"endDate\": \"2025-09-01T00:00:00.000Z\",\n        \"status\": \"PENDING\",\n        \"employeeId\": 1,\n        \"createdAt\": \"2025-08-27T18:45:56.644Z\",\n        \"updatedAt\": \"2025-08-27T18:52:13.726Z\",\n        \"employee\": {\n            \"id\": 1,\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john@deptech.com\",\n            \"phone\": \"08123456788\",\n            \"address\": \"Bandung\",\n            \"gender\": \"MALE\",\n            \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n            \"updatedAt\": \"2025-08-27T18:33:09.259Z\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"APPROVED\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/leave/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leave",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"APPROVED\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/leave/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-hH/mfRwcbyudkWBZgEOZucpogP0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:52:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Leave with ID 1 not found\",\n    \"error\": \"NOT_FOUND\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T18:52:42.034Z\",\n    \"path\": \"/leave/1\"\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"APPROVED\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/leave/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "487"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e7-pXj7z3pHFn9s9NsBnEjRvoeUwAY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:53:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Leave record updated successfully\",\n    \"data\": {\n        \"id\": 3,\n        \"reason\": \"Rest\",\n        \"startDate\": \"2025-09-01T00:00:00.000Z\",\n        \"endDate\": \"2025-09-01T00:00:00.000Z\",\n        \"status\": \"APPROVED\",\n        \"employeeId\": 1,\n        \"createdAt\": \"2025-08-27T18:45:56.644Z\",\n        \"updatedAt\": \"2025-08-27T18:53:05.179Z\",\n        \"employee\": {\n            \"id\": 1,\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john@deptech.com\",\n            \"phone\": \"08123456788\",\n            \"address\": \"Bandung\",\n            \"gender\": \"MALE\",\n            \"createdAt\": \"2025-08-27T11:53:18.166Z\",\n            \"updatedAt\": \"2025-08-27T18:33:09.259Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "400 Bad Request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"APPROVEDdddd\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/leave/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "213"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d5-k6iE283TZND63EP757fi2Udrt0c\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 20:11:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Validation failed\",\n    \"error\": \"BAD_REQUEST\",\n    \"details\": [\n        \"status must be one of the following values: PENDING, APPROVED, REJECTED\"\n    ],\n    \"timestamp\": \"2025-08-27T20:11:38.065Z\",\n    \"path\": \"/leave/3\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/leave/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"leave",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404 Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/leave/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "148"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"94-cCVqt5UZ9cNWgJNLS5I2EIGqN8Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:54:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Leave with ID 1 not found\",\n    \"error\": \"NOT_FOUND\",\n    \"details\": null,\n    \"timestamp\": \"2025-08-27T18:54:01.067Z\",\n    \"path\": \"/leave/1\"\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/leave/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"leave",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-XQXUdAQCGi3s40GO/OhQTjzoeQQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 27 Aug 2025 18:54:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Leave record deleted successfully\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
