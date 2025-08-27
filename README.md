@@ -111,12 +111,6 @@ Data sample pegawai yang akan dibuat:
 npm run start:dev
 ```
 
-### Production mode
-
-```bash
-npm run build
-npm run start:prod
-```
 
 ## Penggunaan API
 
