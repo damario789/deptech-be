@@ -55,23 +55,34 @@ npm install
 Buat file `.env` di root project dengan isi seperti berikut:
 
 ```
-DATABASE_URL="mysql://username:password@localhost:3306/deptech"
-JWT_SECRET="your-secret-key"
-BCRYPT_SALT_ROUNDS="10"
+# Application
+PORT=3000
+NODE_ENV=development
+
+# Database
+DATABASE_URL="mysql://user:password@localhost:3306/deptech_db"
+
+# Authentication
+JWT_SECRET="your_jwt_secret_here"
+JWT_EXPIRATION="1d"
+
+# Bcrypt
+BCRYPT_SALT_ROUNDS=10
 ```
 
 Sesuaikan `username`, `password`, dan nama database sesuai dengan konfigurasi MySQL Anda.
 
-### 4. Migrate database
+
+### 4. Migrasi Database (tanpa seed)
 
 ```bash
-npx prisma migrate dev --name init
+npm run prisma:migrate
 ```
 
-### 5. Generate Prisma client
+### 5. Generate Prisma Client
 
 ```bash
-npx prisma generate
+npm run prisma:generate
 ```
 
 ### 6. Seed Database (Opsional)
@@ -79,8 +90,9 @@ npx prisma generate
 Untuk mengisi database dengan data awal, gunakan perintah berikut:
 
 ```bash
-npx prisma db seed
+npm run prisma:seed
 ```
+
 
 Setelah seeding berhasil, Anda dapat login menggunakan kredensial admin berikut:
 
